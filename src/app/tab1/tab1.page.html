@@ -1,17 +1,42 @@
-<ion-header [translucent]="true">
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
+    <ion-title slot="start" mode="md">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/840px-Instagram_logo.svg.png" alt="Logo de instagram" />
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button  color="dark">
+        <ion-icon slot="icon-only" name="add-circle-outline" ></ion-icon>
+      </ion-button>
+      <ion-button  color="dark">
+        <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
+      </ion-button>
+      <ion-button  color="dark">
+        <ion-icon slot="icon-only" name="chatbubbles-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+<ion-content [fullscreen]="true">
+  <ion-slides [options]="opts" class="ion-margin-top">
+    <ion-slide class="create">
+      <div class="badge">
+        +
+      </div>
+      <ion-avatar>
+        <img src="https://pbs.twimg.com/profile_images/1387084264014024705/m_y0DmIE.jpg" />
+      </ion-avatar>
+      <span>Your Story</span>
+    </ion-slide>
+    <ion-slide *ngFor="let post of posts">
+      <ion-avatar class="history">
+        <img [src]="post.imgUser" />
+      </ion-avatar>
+      <span>{{ post.username }}</span>
+    </ion-slide>
+  </ion-slides>
+
+
+  <app-post *ngFor="let post of posts" [post]="post"></app-post>
 </ion-content>

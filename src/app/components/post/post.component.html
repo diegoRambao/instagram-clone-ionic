@@ -1,0 +1,48 @@
+<ion-card class="ion-no-margin feed-card">
+  <ion-card-header class="user-detail-header ion-no-padding ion-padding-start ion-padding-end">
+
+    <ion-item lines="none" class="ion-no-padding">
+      <ion-avatar>
+        <img [src]="post.imgUser" />
+      </ion-avatar>
+
+      <div class="user-detail">
+        <p class="username">{{ post.username }}</p>
+        <p class="location" *ngIf="post.location">{{ post.location }}</p>
+      </div>
+    </ion-item>
+
+
+    <ion-buttons class="options-header">
+      <ion-button size="small">
+        <ion-icon name="ellipsis-vertical" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-card-header>
+
+  <ion-card-content class="ion-no-padding">
+    <img [src]="post.imgs[0]" alt="Fondo de imagen">
+  </ion-card-content>
+
+  <div class="option-feed">
+    <ion-buttons>
+      <ion-button>
+        <ion-icon name="heart-outline" *ngIf="!post.liked"></ion-icon>
+        <ion-icon name="heart" *ngIf="post.liked" class="icon-liked"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon name="chatbubble-outline"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon name="paper-plane-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons>
+      <ion-button>
+        <ion-icon name="bookmark-outline" *ngIf="!post.saved"></ion-icon>
+        <ion-icon name="bookmark" *ngIf="post.saved"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </div>
+</ion-card>
